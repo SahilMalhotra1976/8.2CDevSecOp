@@ -1,49 +1,14 @@
 pipeline {
     agent any
-
     tools {
-        maven 'Maven-3.9.11' // matches the name you set in Jenkins
+        maven 'Maven-3.9.11'  // Your Maven installation name
+        jdk 'OpenJDK-24'      // The JDK name you just configured
     }
 
     stages {
-        stage('Checkout') {
-            steps {
-                checkout scm
-            }
-        }
-
-        stage('Build & Test') {
-            steps {
-                sh 'mvn clean test'
-            }
-            post {
-                always {
-                    emailext(
-                        to: 'your_email@gmail.com',
-                        subject: "Test Stage ${currentBuild.currentResult}: ${currentBuild.fullDisplayName}",
-                        body: "The Test stage finished with status: ${currentBuild.currentResult}.\nView logs at: ${env.BUILD_URL}",
-                        attachLog: true
-                    )
-                }
-            }
-        }
-
-        stage('Security Scan') {
-            steps {
-                sh 'echo "Running security scan..."'
-                // Replace with actual security scan command, e.g., `sh "trivy fs ."`
-            }
-            post {
-                always {
-                    emailext(
-                        to: 'your_email@gmail.com',
-                        subject: "Security Scan Stage ${currentBuild.currentResult}: ${currentBuild.fullDisplayName}",
-                        body: "The Security Scan stage finished with status: ${currentBuild.currentResult}.\nView logs at: ${env.BUILD_URL}",
-                        attachLog: true
-                    )
-                }
-            }
-        }
+        stage('Checkout') { steps { checkout scm } }
+        stage('Build & Test') { steps { sh 'mvn clean test' } }
+        stage('Security Scan') { steps { sh 'echo "Running security scan..."' } }
     }
 
     post {
@@ -51,7 +16,7 @@ pipeline {
             emailext(
                 to: 'your_email@gmail.com',
                 subject: "SUCCESS: Job ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
-                body: "Good news! The job succeeded.\nCheck console: ${env.BUILD_URL}",
+                body: "The job succeeded.\nCheck console: ${env.BUILD_URL}",
                 attachLog: true
             )
         }
@@ -59,7 +24,7 @@ pipeline {
             emailext(
                 to: 'your_email@gmail.com',
                 subject: "FAILURE: Job ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
-                body: "The job failed. Please check logs here: ${env.BUILD_URL}",
+                body: "The job failed. Check logs: ${env.BUILD_URL}",
                 attachLog: true
             )
         }
