@@ -37,7 +37,7 @@ pipeline {
     post {
         success {
             emailext(
-                to: 'your_email@gmail.com',
+                to: 'malhotrasahil263@gmail.com',
                 subject: "SUCCESS: Job ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
                 body: "The job succeeded.\nCheck console: ${env.BUILD_URL}",
                 attachLog: true
@@ -45,7 +45,7 @@ pipeline {
         }
         failure {
             emailext(
-                to: 'your_email@gmail.com',
+                to: 'malhotrasahil263@gmail.com',
                 subject: "FAILURE: Job ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
                 body: "The job failed. Check logs: ${env.BUILD_URL}",
                 attachLog: true
