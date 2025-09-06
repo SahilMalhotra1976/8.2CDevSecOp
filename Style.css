@@ -1,0 +1,86 @@
+body, h1, form {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+  background: linear-gradient(135deg, #e0f7f4, #f8fdfd);
+  color: #333;
+}
+
+h1 {
+  text-align: center;
+  padding: 25px;
+  font-size: 28px;
+  font-weight: 600;
+  background: #01404e;
+  color: #fff;
+  letter-spacing: 1px;
+}
+
+form {
+  max-width: 420px;
+  margin: 40px auto;
+  padding: 30px;
+  background: #fff;
+  border-radius: 12px;
+  box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
+}
+
+label {
+  display: block;
+  margin-bottom: 15px;
+  font-weight: 600;
+  color: #014e2d;
+  text-align: center;
+  font-size: 16px;
+}
+
+#Fname,
+#Lname {
+  width: 48%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+}
+
+#Fname {
+  margin-right: 3%;
+}
+
+input[type="email"] {
+  width: 100%;
+  padding: 12px;
+  margin-bottom: 15px;
+  border: 1px solid #ccc;
+  border-radius: 6px;
+  font-size: 15px;
+  transition: border-color 0.3s;
+}
+
+input:focus {
+  outline: none;
+  border-color: #02834b;
+  box-shadow: 0 0 6px rgba(1, 78, 45, 0.2);
+}
+
+button {
+  width: 100%;
+  padding: 12px;
+  background: #014e2d;
+  color: #fff;
+  border: none;
+  border-radius: 6px;
+  font-size: 16px;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background 0.5s, transform 0.2s;
+}
+
+button:hover {
+  background: #02834b;
+  transform: translateY(-2px);
+}
