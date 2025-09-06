@@ -13,6 +13,7 @@ pipeline {
     post {
         always {
             emailext(
+                from: 'malhotrasahil263@gmail.com',  // must match your Gmail account/app password
                 to: 'malhotrasahil263@gmail.com',
                 subject: "Jenkins Build ${env.JOB_NAME} [${env.BUILD_NUMBER}]",
                 body: """Hello,
@@ -27,4 +28,3 @@ Jenkins""",
     }
 }
 
-    
