@@ -10,7 +10,7 @@ pipeline {
             post {
                 always {
                     emailext(
-                        to: 'your_email@gmail.com',
+                        to: 'malhotrasahil263@gmail.com',
                         subject: "Build & Test Stage ${currentBuild.currentResult}: ${currentBuild.fullDisplayName}",
                         body: "The Build & Test stage finished with status: ${currentBuild.currentResult}.\nView logs at: ${env.BUILD_URL}",
                         attachLog: true
