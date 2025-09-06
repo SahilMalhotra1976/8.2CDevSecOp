@@ -1,5 +1,6 @@
 pipeline {
     agent any
+
     stages {
         stage('Checkout') {
             steps { checkout scm }
@@ -7,30 +8,10 @@ pipeline {
 
         stage('Build & Test') {
             steps { sh 'echo "Simulating Build & Test..."' }
-            post {
-                always {
-                    emailext(
-                        to: 'malhotrasahil263@gmail.com',
-                        subject: "Build & Test Stage ${currentBuild.currentResult}: ${currentBuild.fullDisplayName}",
-                        body: "The Build & Test stage finished with status: ${currentBuild.currentResult}.\nView logs at: ${env.BUILD_URL}",
-                        attachLog: true
-                    )
-                }
-            }
         }
 
         stage('Security Scan') {
             steps { sh 'echo "Simulating Security Scan..."' }
-            post {
-                always {
-                    emailext(
-                        to: 'malhotrasahil263@gmail.com',
-                        subject: "Security Scan Stage ${currentBuild.currentResult}: ${currentBuild.fullDisplayName}",
-                        body: "The Security Scan stage finished with status: ${currentBuild.currentResult}.\nView logs at: ${env.BUILD_URL}",
-                        attachLog: true
-                    )
-                }
-            }
         }
     }
 
@@ -53,3 +34,5 @@ pipeline {
         }
     }
 }
+
+    
